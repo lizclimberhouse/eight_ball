@@ -1,6 +1,8 @@
-require_relative 'main'
+
 
 class Answers
+
+  attr_accessor :ans_arr
 
   def initialize
 
@@ -20,15 +22,14 @@ class Answers
   ]
 end
 
-  def get_answer
-    puts @ans_arr.shuffle.first
-    @start.main_menu
-  end
+  # def self.get_answer
+  #   puts @ans_arr.shuffle.first
+  # end
 
-  def self.add_answer
-    puts 'Enter a new answer'
-    new_answer = gets.strip
-    @ans_arr << new_answer
-    @start.main_menu
-  end
+  # def self.add_answer
+  #   puts 'Enter a new answer'
+  #   new_answer = gets.strip
+  #   @ans_arr << new_answer
+  #   @start.main_menu
+  # end
 end
