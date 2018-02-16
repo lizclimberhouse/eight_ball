@@ -3,18 +3,17 @@ require_relative 'answers'
 
 class Start
 
-  attr_accessor :answers
-  attr_accessor :ans_arr # :answers is same as @answers
+  attr_accessor :answers # :answers is same as @answers
+  attr_accessor :ans_arr 
 
-  def initialize #runs when you call start on the class
+  def initialize #runs when you call start on the class at the bottom
     
     @answers = Answers.new
+    @add_answers = Answers.new
     main_menu
   end
-# .self =>
-# not self => 
+
   def main_menu
-#TODO refactor this so it isn't the questions at the beginning
     puts "=================="
     puts "Magic 8-Ball"
     puts "=================="
@@ -26,30 +25,32 @@ class Start
         puts '*SECRET CODE WORD USED*'
         puts 'Enter a new answer:'
         new_answer = gets.strip.downcase
-        @answers.ans_arr << new_answer
-        main_menu
+        @add_answers.ans_arr.each do |ans|
+          if ans.downcase === new_answer
+            main_menu
+          else
+          end
+        end            
+        @add_answers.ans_arr << new_answer
 
+      when 'reset'
+        puts "You choose to re-set the answers"
+        @add_answers = @answers
+      when 'print'
+        puts "You choose to print all the answers"
+        puts "ANSWERS ARE: " 
+        @add_answers.ans_arr.each do |ans|
+          puts "#{ans}" 
+        end
       when 'quit'
         puts "Thank you, come again"
         exit
-
       else
         puts "QUESTION: '#{question}'"
-        puts "ANSWER: #{@answers.ans_arr.shuffle.first}" #sample
-        main_menu
-
-      # @answers.get_answer
-      # if we want to restate the question we can use "question" to reference
-      # puts "takes you to answers"
-    
-#TODO loop over the entry to see if it matches something already in the ans_arr
-#TODO make a second instance of the ans_arr. Make an option to reset to the original ans_arr (hint: arr.clone)
-#TODO option to have all answers printed out (# puts @answers.ans_arr)
-#TODO use .uniq to get ride of duplicates    
-      # @answers.add_answer
+        puts "ANSWER: #{@add_answers.ans_arr.shuffle.first}" #sample
     end
+    main_menu
   end
-  
 end
 
 
