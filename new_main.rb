@@ -10,6 +10,12 @@ class Start
     
     @answers = Answers.new
     @add_answers = Answers.new
+
+  
+    # @add_answers.ans_arr << @first
+    # @add_answers.ans_arr << @second
+    # @add_answers.ans_arr << @third
+    
     main_menu
   end
 
@@ -53,8 +59,14 @@ class Start
   end
 end
 
+# first, second, third = ARGV
+
+# @first = "#{first}"
+# @second = "#{second}"
+# @third = "#{third}"
 
 Start.new
+
 # binding.pry
 # @start.main_menu
 
